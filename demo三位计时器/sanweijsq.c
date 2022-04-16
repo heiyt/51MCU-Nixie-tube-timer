@@ -29,7 +29,7 @@ main()
 		delay(10);
 		if(p31==0){
 			switch(xuan){
-			case 1:count1++;break;
+			case 1:count1=0;break;
 			case 2:count2++;break;
 			case 3:count3++;break;
 			}
