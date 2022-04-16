@@ -1,0 +1,192 @@
+C51 COMPILER V7.50   SANWEIJSQ                                                             04/08/2022 09:39:13 PAGE 1   
+
+
+C51 COMPILER V7.50, COMPILATION OF MODULE SANWEIJSQ
+OBJECT MODULE PLACED IN sanweijsq.OBJ
+COMPILER INVOKED BY: D:\programs\keil2\C51\BIN\C51.EXE sanweijsq.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"reg51.h"
+   2          unsigned char code dis[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71}
+             -;
+   3          sbit p30=P3^0;sbit p31=P3^1;
+   4          sbit p20=P2^0;sbit p21=P2^1;sbit p22=P2^2;sbit p23=P2^3;sbit p24=P2^4;sbit p25=P2^5;sbit p07=P0^7;
+   5          char a=0;char b=0;char c=0;char d=0;char e=0;char f=0;
+   6          char aa=0;char bb=0;char cc=0;char dd=0;char ee=0;char ff=0;
+   7          int count1=0;int count2=0;int count3=0;char i=0;
+   8          int count11;int count22;int count33;
+   9          int x=0;int y=0;char xuan=0;int shan=0;
+  10          void delay(int a);
+  11          char choice=-1;char se=-1;
+  12          main()
+  13          {
+  14   1              TMOD=0x21;
+  15   1              TH0=0xf4;TL0=48;
+  16   1              TL1=TH1=0x38;
+  17   1              PT1=1;PT0=0;IT0=1;
+  18   1              EA=1;ET1=1;ET0=1;EX0=1;
+  19   1              TR0=1;TR1=1;
+  20   1              while(1){
+  21   2              if(choice==-1){
+  22   3              if(p30==0){
+  23   4              delay(10);
+  24   4                      if(p30==0){xuan++;
+  25   5                      if(xuan==4)xuan=0;
+  26   5                                        }
+  27   4                                }while(p30==0);
+  28   3              if(p31==0){
+  29   4                      delay(10);
+  30   4                      if(p31==0){
+  31   5                              switch(xuan){
+  32   6                              case 1:count1++;break;
+  33   6                              case 2:count2++;break;
+  34   6                              case 3:count3++;break;
+  35   6                              }
+  36   5                      }while(p31==0);
+  37   4              }
+  38   3              }
+  39   2              
+  40   2              if(choice==1){
+  41   3                      if(p30==0){
+  42   4                      delay(10);
+  43   4                              if(p30==0){
+  44   5                                      se=-se; 
+  45   5                              }while(p30==0);
+  46   4                      }
+  47   3                      if(p31==0){
+  48   4                      delay(10);
+  49   4                              if(p31==0){
+  50   5                              if(se==-1){count11=0;count22=0;count33=0;}
+  51   5                              }while(p31==0);
+  52   4                      }
+  53   3              }
+  54   2                              }        
+C51 COMPILER V7.50   SANWEIJSQ                                                             04/08/2022 09:39:13 PAGE 2   
+
+  55   1      }
+  56          
+  57          void int_verxianshi() interrupt 1 using 0
+  58          {
+  59   1      if(choice==-1){
+  60   2              P0=0xff;
+  61   2              TH0=0xf4;
+  62   2              TL0=48;
+  63   2              i++;if(i==6)i=0;P2=0;shan++;
+  64   2              if(shan==300)shan=0;
+  65   2              switch(i){
+  66   3                      case 0:
+  67   3                      if(xuan==3&shan<=150){P0=0xff;}
+  68   3                      else
+  69   3                      P0=~dis[f];p20=1;break;
+  70   3                      case 1:
+  71   3                      if(xuan==3&shan<=150){P0=0xff;}
+  72   3                      else
+  73   3                      P0=~dis[e];p07=0;p21=1;break;
+  74   3                      case 2:
+  75   3                      if(xuan==2&shan<=150){P0=0xff;}
+  76   3                      else
+  77   3                      P0=~dis[d];p22=1;break;
+  78   3                      case 3:
+  79   3                      if(xuan==2&shan<=150){P0=0xff;}
+  80   3                      else
+  81   3                      P0=~dis[c];p07=0;p23=1;break;
+  82   3                      case 4:
+  83   3                      if(xuan==1&shan<=150){P0=0xff;}
+  84   3                      else
+  85   3                      P0=~dis[b];p24=1;break;
+  86   3                      case 5:
+  87   3                      if(xuan==1&shan<=150){P0=0xff;}
+  88   3                      else
+  89   3                      P0=~dis[a];p07=0;p25=1;break;
+  90   3                      }
+  91   2              }
+  92   1      if(choice==1){
+  93   2              P0=0xff;
+  94   2              TH0=0xf4;
+  95   2              TL0=48;
+  96   2              i++;if(i==6)i=0;P2=0;
+  97   2              aa=count11%10;
+  98   2              bb=count11/10;
+  99   2              cc=count22%10;
+ 100   2              dd=count22/10;
+ 101   2              ee=count33%10;
+ 102   2              ff=count33/10;
+ 103   2              switch(i){
+ 104   3                      case 0:
+ 105   3                      P0=~dis[ff];p20=1;break;
+ 106   3                      case 1:
+ 107   3                      P0=~dis[ee];p07=0;p21=1;break;
+ 108   3                      case 2:
+ 109   3                      P0=~dis[dd];p22=1;break;
+ 110   3                      case 3:
+ 111   3                      P0=~dis[cc];p07=0;p23=1;break;
+ 112   3                      case 4:
+ 113   3                      P0=~dis[bb];p24=1;break;
+ 114   3                      case 5:
+ 115   3                      P0=~dis[aa];p07=0;p25=1;break;
+ 116   3                      }
+C51 COMPILER V7.50   SANWEIJSQ                                                             04/08/2022 09:39:13 PAGE 3   
+
+ 117   2              }
+ 118   1      }
+ 119          
+ 120          void int_jishu() interrupt 3 using 1
+ 121          {
+ 122   1              x++;
+ 123   1              if(x==4000){
+ 124   2              x=0;count1++;
+ 125   2              if(count1>59){
+ 126   3                      count1=0;count2++;
+ 127   3              }
+ 128   2              if(count2>59){
+ 129   3                      count2=0;count3++;
+ 130   3              }
+ 131   2              if(count3>23)count3=0;
+ 132   2              a=count1%10;
+ 133   2              b=count1/10;
+ 134   2              c=count2%10;
+ 135   2              d=count2/10;
+ 136   2              e=count3%10;
+ 137   2              f=count3/10;
+ 138   2              }
+ 139   1              if(se==1){
+ 140   2                      y++;if(y==40){
+ 141   3                      y=0;count11++;
+ 142   3                      if(count11>99){
+ 143   4                              count11=0;count22++;
+ 144   4                      }
+ 145   3                      if(count22>59){
+ 146   4                              count22=0;count33++;
+ 147   4                      }
+ 148   3                      if(count33>59){
+ 149   4                              count33=0;
+ 150   4                      }
+ 151   3                      }
+ 152   2              }
+ 153   1      }
+ 154          
+ 155          void int_zhuanhuan()interrupt 0 using 2
+ 156          {
+ 157   1              choice=-choice;
+ 158   1      }
+ 159          
+ 160          void delay(int a)
+ 161          {
+ 162   1              int i,j;
+ 163   1              for(i=0;i<a;i++)for(j=0;j<127;j++);
+ 164   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1343    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     34    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
